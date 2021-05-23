@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  # Unique key of the ReplicaSet instance
+  name: phpinfo-replicaset
+spec:
+  # 3 Pods should exist at all times.
+  replicas: 3
+  selector:
+    matchLabels:
+      app: phpinfo
+  template:
+    metadata:
+      labels:
+        app: phpinfo
+    spec:
+      containers:
+      - name: simplilearn-phpinfo-container
+        image: kingttx/simplilearn-phpinfo:latest
+        command:
+          - "php"
+        args: 
+          - "-f"
+          - "index.php"
+          - "-S"
+          - "0.0.0.0:8080"
