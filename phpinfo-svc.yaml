@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  # Unique key of the Service instance
+  name: phpinfo-svc
+spec:
+  ports:
+    # Accept traffic sent to port 80
+    - name: http
+      port: 80
+      targetPort: 8080
+  selector: 
+    app: phpinfo
